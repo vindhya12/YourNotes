@@ -37,7 +37,7 @@ function showNotes() {
               Note ${index + 1}
             </div>
             <div class="card-body">              
-              <p class="card-text">${element}</p>
+              <p class="bg-white p-2 rounded mb-3 card-text">${element}</p>
               <button id="${index}" onclick="deleteNote(this.id)" class="bg-green-600 hover:bg-green-400  btn btn-primary">Delete note</button>
             </div>
         </div>
