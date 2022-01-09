@@ -33,7 +33,7 @@ function showNotes() {
   notesObj.forEach(function (element, index) {
     html += `
         <div class="shadow-xl note_card my-2 mx-2 card" style="width: 18rem;">
-            <div class="card-header">
+            <div class="bg-zinc-900 text-white card-header">
               Note ${index + 1}
             </div>
             <div class="card-body">              
