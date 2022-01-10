@@ -5,25 +5,28 @@ showNotes();
 let add_btn = document.getElementById("add_btn");
 add_btn.addEventListener("click", function (e) {
   let add_txt = document.getElementById("add_txt");
+  let add_title = document.getElementById("add_title");
   let notes = localStorage.getItem("notes");
-
   if (notes == null) {
     notesObj = [];
   } else {
     notesObj = JSON.parse(notes);
   }
-  notesObj.push(add_txt.value);
+  let myObj={
+    title:add_title.value,
+    text:add_txt.value
+  }
+  notesObj.push(myObj);
   localStorage.setItem("notes", JSON.stringify(notesObj));
   add_txt.value = "";
+  add_title.value = "";
   //console.log(notesObj);
-
   showNotes();
 });
 
 // Function to show elements from localStorage
 function showNotes() {
   let notes = localStorage.getItem("notes");
-
   if (notes == null) {
     notesObj = [];
   } else {
@@ -34,10 +37,10 @@ function showNotes() {
     html += `
         <div class="shadow-xl note_card my-2 mx-2 card" style="width: 18rem;">
             <div class="bg-zinc-900 text-white card-header">
-              Note ${index + 1}
+              ${element.title}
             </div>
             <div class="card-body">              
-              <p class="bg-white p-2 rounded mb-3 card-text">${element}</p>
+              <p class="bg-white p-2 rounded mb-3 card-text">${element.text}</p>
               <button id="${index}" onclick="deleteNote(this.id)" class="bg-green-600 hover:bg-green-400  btn btn-primary">Delete note</button>
             </div>
         </div>
@@ -69,12 +72,16 @@ function deleteNote(index) {
 let search=document.getElementById("search_txt");
 search.addEventListener("input",function(){
 
-    let inputVal=search.value.toLowerCase();
+    let inputVal1=search.value.toLowerCase();    
     //console.log("Input evenet fired",inputVal);
     let note_card=document.getElementsByClassName("note_card");
     Array.from(note_card).forEach(function(element){
+        let card_title=element.getElementsByTagName("div")[0].innerText;
         let card_txt=element.getElementsByTagName("p")[0].innerText;
-        if(card_txt.includes(inputVal)){
+        if(card_title.includes(inputVal1)){
+          element.style.display="block";
+        }
+        else if(card_txt.includes(inputVal1)){
             element.style.display="block";
         }
         else{

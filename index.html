@@ -48,14 +48,16 @@
       </div>
     </nav>
 
-    <div class="m-2 rounded p-4 bg-lime-200 border-4 border-green-900/50 container">
+    <div class="mx-5 my-5 rounded p-4 bg-lime-200 border-4 border-green-900/50 container">
       <h2 class="py-2">Welcome to YourNotes</h2>
       <div class=" shadow-xl card">
         <div class="bg-zinc-800 text-white card-header">Write Note</div>
         <div class="card-body">
-          
+            <div class="mb-3">              
+              <input type="text" class="hover:border-4 border-green-900/100 form-control" id="add_title" placeholder="Enter Title">
+            </div>          
             <div class="mb-3">                
-                <textarea class="hover:border-4 border-green-900/100 form-control" id="add_txt" rows="3"></textarea>
+                <textarea class="hover:border-4 border-green-900/100 form-control" id="add_txt" rows="3" placeholder="Enter Note"></textarea>
             </div>
             <button class="bg-green-600 hover:bg-green-400  btn btn-primary" id="add_btn"> Add Note</button>
         </div>
